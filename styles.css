@@ -109,6 +109,7 @@ header {
     }
     
     .header-spacer {
-        height: 15vh;
+        height: 90vh;
+        background: rgba(158, 191, 213, 1);
 
 }
