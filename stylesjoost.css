@@ -120,20 +120,25 @@
    =========================== */
 
 @keyframes joost-x {
-    0%   { translate: 35vw -50vh; }
+    0%   { translate: 55vw -75vh; }
+    10%   { translate: 40vw -50vh; }
     50%  { translate: -35vw 0; }
-    100% { translate: 35vw 50vh; }
+    90% { translate: 40vw 50vh; }
+    100% { translate: 55vw 75vh; }
 }
 
 @keyframes joost-fade {
     0%   { opacity: 0; }
+    10%   { opacity: .2; }
     15%  { opacity: 1; }
     85%  { opacity: 1; }
+    90% { opacity: .2; }
     100% { opacity: 0; }
 }
 
 @keyframes joost-shadow-move {
-    0%   { top: -10px; left: 10px; }
+    0%   { top: 10px; left: -10px; }
+    5%   { top: -10px; left: 10px; }
     10%  { top: -15px; left: 15px; opacity: 1; }
     20%  { top: -25px; left: 30px; opacity: 1; }
     30%  { top: -40px; left: 55px; opacity: 1; }
@@ -144,5 +149,6 @@
     70%  { top: 55px; left: -40px; opacity: 1; }
     80%  { top: 30px; left: -25px; opacity: 1; }
     90%  { top: 15px; left: -15px; opacity: 1; }
-    100% { top: 10px; left: -10px; }
+    95% { top: 10px; left: -10px; opacity: 1;}
+    100% { top: 10px; left: -10px; opacity: 1; }
 }
