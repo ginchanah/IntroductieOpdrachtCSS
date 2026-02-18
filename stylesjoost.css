@@ -4,7 +4,7 @@
 
 .joost-section {
     height: 300vh;
-    background: radial-gradient(ellipse at 60% 40%, #0d1b3e 0%, #050a1a 60%, #000 100%);
+    background: linear-gradient(to bottom, #0d1b3e 0%, #050a1a 60%, #000 100%);
     position: relative;
     view-timeline: --joost-section block;
 }
