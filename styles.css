@@ -1,15 +1,108 @@
-.mila-section {
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #1e1e1e;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.maja-section {
-    min-height: 100vh;
+body {
+    overflow-x: hidden;
+    background: #eaf7ff;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 100;
     display: flex;
-    justify-content: center;
     align-items: center;
-    background-color: #1e1e1e;
+    justify-content: center;
+    overflow: hidden;
+        pointer-events: none;
+        background: linear-gradient(135deg, #7ecbff 0%, #bfe9ff 55%, #fff7c7 100%);
+    
+        animation: header-shrink linear both;
+        animation-timeline: scroll(root);
+        animation-range: 0% 15%;
+    }
+    
+    @keyframes header-shrink {
+        0% {
+            height: 100vh;
+        }
+    
+        100% {
+            height: 6px;
+        }
+    }
+    
+    header h1 {
+        font-family: 'Georgia', 'Times New Roman', serif;
+        font-size: clamp(2rem, 6vw, 4.5rem);
+        color: #ff9f1c;
+        letter-spacing: 0.12em;
+        text-align: center;
+        text-transform: uppercase;
+        font-weight: 400;
+        position: relative;
+        z-index: 1;
+        white-space: nowrap;
+        text-shadow:
+            0 0 24px rgba(255, 220, 120, 0.55),
+            0 0 52px rgba(255, 170, 40, 0.25);
+    
+        animation: title-fade linear both;
+        animation-timeline: scroll(root);
+        animation-range: 5% 13%;
+    }
+    
+    @keyframes title-fade {
+        0% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    
+        100% {
+            opacity: 0;
+            transform: translateY(-12px);
+        }
+    }
+    
+    .progress-fill {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        background: linear-gradient(90deg, #ffd54f 0%, #fff59d 50%, #ffb300 100%);
+        box-shadow: 0 0 12px 2px rgba(255, 205, 86, 0.8);
+    
+        animation: progress-width linear both, progress-appear linear both;
+        animation-timeline: scroll(root), scroll(root);
+        animation-range: 15% 100%, 13% 16%;
+    }
+    
+    @keyframes progress-width {
+        0% {
+            width: 0%;
+        }
+    
+        100% {
+            width: 100%;
+        }
+    }
+    
+    @keyframes progress-appear {
+        0% {
+            opacity: 0;
+        }
+    
+        100% {
+            opacity: 1;
+        }
+    }
+    
+    .header-spacer {
+        height: 15vh;
 }
