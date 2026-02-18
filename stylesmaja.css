@@ -1,0 +1,219 @@
+/* sources: 
+https://dev.to/afif/we-can-finally-animate-css-gradient-kdk 
+https://codepen.io/danwilson/pen/xxbwvXX?editors=1100
+https://danielcwilson.com/blog/2020/01/motion-path-quirks/
+https://web.dev/articles/speedy-css-tip-animated-gradient-text
+*/
+
+
+
+/* gradient hover */
+
+/* @property --p {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 5%;
+}
+
+@property --p2 {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 30%;
+}
+
+
+
+.majasection:hover {
+    --p:10%;
+    --p2: 80%;
+} */
+
+
+/* algemene styling */
+
+.majasection {
+    --p:10%;
+    --p2: 50%;
+
+    height: 150vh;
+    width: 100vw;
+    cursor:pointer;
+    transition:--p 0.5s, --p2 0.5s;
+    
+    background:linear-gradient(rgba(158, 191, 213, 1) var(--p),rgb(87, 158, 206) var(--p2), rgb(9, 103, 165));
+}
+
+
+/* scroll animation */
+
+
+.majasection {
+    view-timeline-name: --maja-section;
+    position: relative;
+
+    display: grid;
+    justify-items: center;
+    
+}
+
+
+
+.cloudcontainer {
+    position: sticky;
+
+    top: 10px;
+    height: max-content;
+    width: 100vw;
+    padding-top: 10%;
+
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 10rem 10rem 10rem 10rem
+
+}
+
+.cloud {
+    width: max-content;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .cloud1 {
+        animation: translateCloud1 both;
+        animation-range: entry contain 13cm;
+        animation-timeline: --maja-section;
+        
+    }
+
+    .cloud2 {
+        animation: translateCloud2 both;
+        animation-range: entry contain 6cm;
+        animation-timeline: --maja-section;
+        top: 20%
+    }
+
+    .cloud3 {
+        animation: translateCloud3 both;
+        animation-range: entry contain 6cm;
+        animation-timeline: --maja-section;
+        top: 30%
+    }
+
+    .suncontainer {
+        animation: moveSun both;
+        animation-range: contain;
+        animation-timeline: --maja-section;
+        position: absolute;
+        top: 10%;
+        left: 0px;
+        offset-path: path('M0 631.337C0 631.337 348.373 17.1646 722.5 0.836745C1116.7 -16.367 1512 631.337 1512 631.337')
+
+    }
+}
+
+@keyframes translateCloud1 {
+    from {
+        transform: translateX(-50vw);
+    }
+    to {
+        transform: translateX(20vw);
+    }
+}
+
+@keyframes translateCloud2 {
+    from {
+        transform: translateX(-50vw);
+    }
+    to {
+        transform: translateX(50vw);
+    }
+}
+
+@keyframes translateCloud3 {
+    from {
+        transform: translateX(150vw);
+    }
+    to {
+        transform: translateX(10vw);
+    }
+}
+
+@keyframes moveSun {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        offset-distance: 100%;
+        transform: rotate(360deg);
+    }
+}
+
+
+
+
+
+
+/* animate on path */
+
+.birdcontainer {
+    offset-path: path('M1 966.513C1 965.989 1 965.466 7.1816 895.43C13.3632 825.393 25.7264 685.86 33.2736 609.221C40.8207 532.582 43.1771 523.065 45.6952 514.601C50.3738 498.875 59.4016 482.108 70.0122 465.86C84.3741 443.867 109.411 432.877 124.219 426.617C138.993 420.37 172.583 421.167 203.208 425.063C212.345 426.226 224.871 432.886 241.262 441.577C257.654 450.269 277.15 462.5 305.87 483.167C334.591 503.835 371.945 532.567 393.812 550.103C421.554 572.35 429.992 583.893 441.791 602.844C450.26 616.448 462.45 638.946 472.815 656.649C490.601 687.026 504.232 710.969 513.337 730.066C519.007 741.957 525.99 748.539 534.139 755.311C544.143 763.625 568.429 771.693 598.71 780.296C619.572 786.224 632.847 786.002 641.807 785.482C646.343 785.219 650.75 783.786 665.522 771.84C680.294 759.894 705.27 737.179 721.89 720.81C738.51 704.44 746.017 695.105 768.338 654.879C790.658 614.653 827.565 543.819 850.865 501.604C874.166 459.388 882.742 447.937 888.81 440.268C903.54 421.65 921.91 411.207 940.012 405.321C960.564 398.638 987.576 401.503 1019.94 403.572C1040.15 404.865 1067.88 409.067 1094.71 410.764C1121.55 412.46 1146.6 412.141 1170.8 409.979C1217.83 405.78 1244.85 397.655 1255.27 389.902C1262.19 384.75 1270.66 374.916 1301.56 334.025C1332.47 293.133 1385.11 220.918 1423.8 161.543C1462.49 102.168 1485.65 57.8221 1498.28 33.1404C1510.91 8.4587 1512.32 4.78513 1513.77 1.00024');
+    position: absolute;
+    top: 10px;
+    left: 0px;
+    animation: distance 4000ms infinite ease-in-out;
+    animation-fill-mode: both;
+}
+
+.birdcontainer2 {
+    offset-path: path('M1 966.513C1 965.989 1 965.466 7.1816 895.43C13.3632 825.393 25.7264 685.86 33.2736 609.221C40.8207 532.582 43.1771 523.065 45.6952 514.601C50.3738 498.875 59.4016 482.108 70.0122 465.86C84.3741 443.867 109.411 432.877 124.219 426.617C138.993 420.37 172.583 421.167 203.208 425.063C212.345 426.226 224.871 432.886 241.262 441.577C257.654 450.269 277.15 462.5 305.87 483.167C334.591 503.835 371.945 532.567 393.812 550.103C421.554 572.35 429.992 583.893 441.791 602.844C450.26 616.448 462.45 638.946 472.815 656.649C490.601 687.026 504.232 710.969 513.337 730.066C519.007 741.957 525.99 748.539 534.139 755.311C544.143 763.625 568.429 771.693 598.71 780.296C619.572 786.224 632.847 786.002 641.807 785.482C646.343 785.219 650.75 783.786 665.522 771.84C680.294 759.894 705.27 737.179 721.89 720.81C738.51 704.44 746.017 695.105 768.338 654.879C790.658 614.653 827.565 543.819 850.865 501.604C874.166 459.388 882.742 447.937 888.81 440.268C903.54 421.65 921.91 411.207 940.012 405.321C960.564 398.638 987.576 401.503 1019.94 403.572C1040.15 404.865 1067.88 409.067 1094.71 410.764C1121.55 412.46 1146.6 412.141 1170.8 409.979C1217.83 405.78 1244.85 397.655 1255.27 389.902C1262.19 384.75 1270.66 374.916 1301.56 334.025C1332.47 293.133 1385.11 220.918 1423.8 161.543C1462.49 102.168 1485.65 57.8221 1498.28 33.1404C1510.91 8.4587 1512.32 4.78513 1513.77 1.00024');
+    position: absolute;
+    top: 10px;
+    left: 0px;
+    animation: distance 4000ms infinite;
+    animation-fill-mode: both;
+}
+
+
+@keyframes distance {
+    100% {
+        offset-distance: 100%;
+    }
+}
+
+
+
+/* text gradient */
+
+
+.majasection h2 {
+    font-family: impact;
+    font-size: 5rem;
+    position: relative;
+    z-index: 2000;
+    --color-one: hsl(0, 0%, 100%);
+    --color-two: hsl(0, 0%, 0%);
+    font-size: clamp(3rem, 25vmin, 8rem);
+    background: linear-gradient(
+                    90deg,
+                    var(--color-one),
+                    var(--color-two),
+                    var(--color-one)
+                ) 0 0 / 100% 100%;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    
+
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .majasection h2 {
+        animation: move-bg 8s infinite linear;
+    }
+}
+
+@keyframes move-bg {
+    to {
+        background-position: 10em 0;
+    }
+}
