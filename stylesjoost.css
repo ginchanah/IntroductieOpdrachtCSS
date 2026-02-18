@@ -26,6 +26,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 2;
 
     animation: joost-x linear, joost-fade linear;
     animation-timeline: --joost-section, --joost-section;
@@ -46,7 +47,6 @@
     z-index: 2;
 }
 
-/* Shadow animates: top-right crescent â†’ disappears (full moon) â†’ bottom-left crescent */
 .joost-moon-shadow {
     position: absolute;
     width: 130px;
@@ -60,6 +60,65 @@
     animation-range: entry 0% exit 100%;
 }
 
+/* ===========================
+   Text container
+   =========================== */
+
+.joost-text-container {
+    position: absolute;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.9em;
+    width: min(580px, 85vw);
+    text-align: center;
+    pointer-events: none;
+}
+
+.joost-text-line {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    font-size: clamp(0.85rem, 1.6vw, 1.05rem);
+    line-height: 1.8;
+    color: #e8d5a3;
+    letter-spacing: 0.04em;
+    margin: 0;
+}
+
+.joost-char {
+    display: inline-block;
+    opacity: 0;
+    transform: translate(var(--dx, 0px), var(--dy, 0px)) scale(0.05);
+    filter: blur(8px);
+
+    animation: joost-char-fly linear both;
+    animation-timeline: --joost-section;
+
+    animation-range-start: cover calc(15% + var(--i, 0) / var(--total, 1) * 60%);
+    animation-range-end:   cover calc(21% + var(--i, 0) / var(--total, 1) * 60%);
+}
+
+@keyframes joost-char-fly {
+    0% {
+        opacity: 0;
+        transform: translate(var(--dx, 0px), var(--dy, 0px)) scale(0.05);
+        filter: blur(8px);
+    }
+    25% {
+        opacity: 1;
+        filter: blur(3px);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(0px, 0px) scale(1);
+        filter: blur(0px);
+    }
+}
+
+/* ===========================
+   Moon movement & fade
+   =========================== */
+
 @keyframes joost-x {
     0%   { translate: 35vw -50vh; }
     50%  { translate: -35vw 0; }
@@ -72,7 +131,6 @@
     85%  { opacity: 1; }
     100% { opacity: 0; }
 }
-
 
 @keyframes joost-shadow-move {
     0%   { top: -10px; left: 10px; }
