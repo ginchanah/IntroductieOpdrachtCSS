@@ -1,0 +1,154 @@
+/* ===========================
+   Joost - Moon
+   =========================== */
+
+.joost-section {
+    height: 300vh;
+    background: linear-gradient(to bottom, #0d1b3e 0%, #050a1a 60%, #000 100%);
+    position: relative;
+    view-timeline: --joost-section block;
+}
+
+.joost-scene {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.joost-moon-wrapper {
+    position: absolute;
+    width: 160px;
+    height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+
+    animation: joost-x linear, joost-fade linear;
+    animation-timeline: --joost-section, --joost-section;
+    animation-range: entry 0% exit 100%;
+}
+
+.joost-moon {
+    position: relative;
+    width: 140px;
+    height: 140px;
+    background: #f5e6c8;
+    border-radius: 50%;
+    box-shadow:
+        0 0 30px 6px rgba(245, 220, 160, 0.4),
+        0 0 60px 10px rgba(245, 200, 100, 0.15),
+        inset -8px -4px 0 rgba(200, 170, 100, 0.3);
+    overflow: hidden;
+    z-index: 2;
+}
+
+.joost-moon-shadow {
+    position: absolute;
+    width: 130px;
+    height: 130px;
+    background: #050a1a;
+    border-radius: 50%;
+    box-shadow: inset 0 0 20px 4px rgba(0, 0, 30, 0.6);
+
+    animation: joost-shadow-move linear both;
+    animation-timeline: --joost-section;
+    animation-range: entry 0% exit 100%;
+}
+
+/* ===========================
+   Text container
+   =========================== */
+
+.joost-text-container {
+    position: absolute;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.9em;
+    width: min(580px, 85vw);
+    text-align: center;
+    pointer-events: none;
+}
+
+.joost-text-line {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    font-size: clamp(0.85rem, 1.6vw, 1.05rem);
+    line-height: 1.8;
+    color: #e8d5a3;
+    letter-spacing: 0.04em;
+    margin: 0;
+}
+
+.joost-char {
+    display: inline-block;
+    opacity: 0;
+    transform: translate(var(--dx, 0px), var(--dy, 0px)) scale(0.05);
+    filter: blur(8px);
+
+    animation: joost-char-fly linear both;
+    animation-timeline: --joost-section;
+
+    animation-range-start: cover calc(25% + var(--i, 0) / var(--total, 1) * 40%);
+    animation-range-end: cover calc(31% + var(--i, 0) / var(--total, 1) * 40%);
+}
+
+@keyframes joost-char-fly {
+    0% {
+        opacity: 0;
+        transform: translate(var(--dx, 0px), var(--dy, 0px)) scale(0.05);
+        filter: blur(8px);
+    }
+    25% {
+        opacity: 1;
+        filter: blur(3px);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(0px, 0px) scale(1);
+        filter: blur(0px);
+    }
+}
+
+/* ===========================
+   Moon movement & fade
+   =========================== */
+
+@keyframes joost-x {
+    0%   { translate: 55vw -75vh; }
+    10%  { translate: 40vw -50vh; }
+    50%  { translate: -35vw 0; }
+    90%  { translate: 40vw 50vh; }
+    100% { translate: 55vw 75vh; }
+}
+
+@keyframes joost-fade {
+    0%   { opacity: 0; }
+    10%  { opacity: .2; }
+    15%  { opacity: 1; }
+    85%  { opacity: 1; }
+    90%  { opacity: .2; }
+    100% { opacity: 0; }
+}
+
+@keyframes joost-shadow-move {
+    0%   { top: 10px; left: -10px; }
+    5%   { top: -10px; left: 10px; }
+    10%  { top: -15px; left: 15px; opacity: 1; }
+    20%  { top: -25px; left: 30px; opacity: 1; }
+    30%  { top: -40px; left: 55px; opacity: 1; }
+    40%  { top: -60px; left: 70px; opacity: 1; }
+    50%  { top: -110px; left: 110px; opacity: 0; }
+    51%  { top: 110px; left: -110px; opacity: 0; }
+    60%  { top: 70px; left: -60px; opacity: 1; }
+    70%  { top: 55px; left: -40px; opacity: 1; }
+    80%  { top: 30px; left: -25px; opacity: 1; }
+    90%  { top: 15px; left: -15px; opacity: 1; }
+    95%  { top: 10px; left: -10px; opacity: 1;}
+    100% { top: 10px; left: -10px; opacity: 1; }
+}
