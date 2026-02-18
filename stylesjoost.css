@@ -94,8 +94,8 @@
     animation: joost-char-fly linear both;
     animation-timeline: --joost-section;
 
-    animation-range-start: cover calc(15% + var(--i, 0) / var(--total, 1) * 60%);
-    animation-range-end:   cover calc(21% + var(--i, 0) / var(--total, 1) * 60%);
+    animation-range-start: cover calc(25% + var(--i, 0) / var(--total, 1) * 40%);
+    animation-range-end: cover calc(31% + var(--i, 0) / var(--total, 1) * 40%);
 }
 
 @keyframes joost-char-fly {
@@ -121,18 +121,18 @@
 
 @keyframes joost-x {
     0%   { translate: 55vw -75vh; }
-    10%   { translate: 40vw -50vh; }
+    10%  { translate: 40vw -50vh; }
     50%  { translate: -35vw 0; }
-    90% { translate: 40vw 50vh; }
+    90%  { translate: 40vw 50vh; }
     100% { translate: 55vw 75vh; }
 }
 
 @keyframes joost-fade {
     0%   { opacity: 0; }
-    10%   { opacity: .2; }
+    10%  { opacity: .2; }
     15%  { opacity: 1; }
     85%  { opacity: 1; }
-    90% { opacity: .2; }
+    90%  { opacity: .2; }
     100% { opacity: 0; }
 }
 
@@ -149,6 +149,6 @@
     70%  { top: 55px; left: -40px; opacity: 1; }
     80%  { top: 30px; left: -25px; opacity: 1; }
     90%  { top: 15px; left: -15px; opacity: 1; }
-    95% { top: 10px; left: -10px; opacity: 1;}
+    95%  { top: 10px; left: -10px; opacity: 1;}
     100% { top: 10px; left: -10px; opacity: 1; }
 }

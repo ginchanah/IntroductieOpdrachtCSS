@@ -44,7 +44,7 @@
         }
 
         const total = chars.length;
-        const revealStart = 15, revealEnd = 75;
+        const revealStart = 25, revealEnd = 65;
 
         const scene = document.querySelector('.joost-scene');
         const sceneRect = scene.getBoundingClientRect();
