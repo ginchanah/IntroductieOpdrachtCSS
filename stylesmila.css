@@ -1,0 +1,308 @@
+:root {
+    --mila-color-bg: #000;
+    --mila-color-bg-two: #203f5f;
+    --mila-star1: #598dfd;
+    --mila-star2: #6192fd;
+    --mila-star3: #6998fd;
+    --mila-star4: #719dfd;
+    --mila-star5: #79a3fd;
+    --mila-star6: #81a8fd;
+    --mila-star7: #89aefd;
+    --mila-star8: #92b3fd;
+    --mila-star9: #9ab9fd;
+    --mila-star10: #a2bffe;
+    --mila-star11: #aac4fe;
+    --mila-star12: #b2cafe;
+    --mila-star13: #bacffe;
+    --mila-star14: #c2d5fe;
+    --mila-star15: #cadafe; 
+    --mila-star16: #d2e0fe;
+    --mila-star17: #dae5fe;
+    --mila-star18: #e2ebfe;
+    --mila-star19: #eaf1fe;
+    --mila-star20: #f2f6fe;
+    }
+
+.milasection {
+    *, *::after, *::before {
+        box-sizing:border-box; 
+        margin: 0;
+    }
+
+    
+
+
+
+    /* HEADER: SPACE FOR SCROLLING */
+    header {
+    background: white;
+        width: 100%;
+        height: 100svh;
+        display: grid;
+        grid-template-columns: 1fr;
+        align-items: center;
+    justify-items: center;
+    
+    h1 {
+        color: black;
+        font-family: sans-serif;
+    }
+    }
+
+
+
+
+
+
+    /* MILA'S SECTIONS */
+    /* SECTION: PPARALLAX */
+    section:nth-of-type(1) {
+    background-color: var(--mila-star1);
+    padding: 5em;
+    
+    & div {
+        background-color: var(--mila-color-bg);
+        view-timeline-name: --mila-zodiac;
+        position: relative;
+        display: flex;
+        aspect-ratio: 2/1;
+        justify-content: center;
+        overflow: clip;
+        
+    }
+    
+    & svg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 200%;
+        object-fit: cover;
+        display: block;
+        
+        animation-name: mila-zodiac;
+        animation-timeline: --mila-zodiac;
+        animation-range: cover;
+        animation-fill-mode: both;
+        animation-timing-function: linear;
+    }
+    
+    & svg path {
+        fill: var(--mila-star10);
+    }
+    }
+
+    /* SECTION: ROTATING STAR */
+    section:nth-of-type(2) {
+        height: 200svh;
+    background: var(--mila-color-bg);
+    
+    display: grid;
+    place-items: center;
+    position: sticky;
+    
+    perspective: 30em;
+    transform-style: preserve-3d;
+    
+    view-timeline-name: --mila-stars-container;
+    }
+
+    section:nth-of-type(2) > div:nth-of-type(1) {
+    width: 20em;
+    aspect-ratio: 1;
+    
+    position: fixed;
+    bottom: 50%;
+    }
+
+
+    /* STAR ROTATING */
+    div:nth-of-type(1) div {
+    width: 20em;
+    aspect-ratio: 1;
+    
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    
+    opacity: 0.5;
+    
+    --blur: 200px;
+    filter: blur(var(--blur));
+    
+    animation-timeline: --mila-stars-container;
+    animation-name: mila-rotate-star;
+    animation-range: exit;
+    animation-fill-mode: both;
+    
+    
+    
+    &:nth-of-type(1) {
+        z-index: 10;
+        background-color: var(--mila-star1);
+        animation-range: 5% 100%;
+        position: fixed;
+    }
+    
+    &:nth-of-type(2) {
+        background-color: var(--mila-star2);
+        animation-range: 5.25% 100%;
+        position: fixed;
+        scale: 0.95;
+    }
+    
+    &:nth-of-type(3) {
+        background-color: var(--mila-star3);
+        animation-range: 5.5% 100%;
+        position: fixed;
+        scale: 0.9;
+    }
+    
+    &:nth-of-type(4) {
+        background-color: var(--mila-star4);
+        animation-range: 5.75% 100%;
+        position: fixed;
+        scale: 0.85;
+    }
+    
+    &:nth-of-type(5) {
+        background-color: var(--mila-star5);
+        animation-range: 6% 100%;
+        position: fixed;
+        scale: 0.8;
+    }
+    
+    &:nth-of-type(6) {
+        background-color: var(--mila-star6);
+        animation-range: 6.25% 100%;
+        position: fixed;
+        scale: 0.75;
+    }
+    
+    &:nth-of-type(7) {
+        background-color: var(--mila-star7);
+        animation-range: 6.5% 100%;
+        position: fixed;
+        scale: 0.7;
+    }
+    
+    &:nth-of-type(8) {
+        background-color: var(--mila-star8);
+        animation-range: 6.75% 100%;
+        position: fixed;
+        scale: 0.65;
+    }
+    
+    &:nth-of-type(9) {
+        background-color: var(--mila-star9);
+        animation-range: 7% 100%;
+        position: fixed;
+        scale: 0.6;
+    }
+    
+    &:nth-of-type(10) {
+        background-color: var(--mila-star10);
+        animation-range: 7.25% 100%;
+        position: fixed;
+        scale: 0.55;
+    }
+    
+    &:nth-of-type(11) {
+        background-color: var(--mila-star11);
+        animation-range: 7.5% 100%;
+        position: fixed;
+        scale: 0.5;
+    }
+    
+    &:nth-of-type(12) {
+        background-color: var(--mila-star12);
+        animation-range: 7.75% 100%;
+        position: fixed;
+        scale: 0.45;
+    }
+    
+    &:nth-of-type(13) {
+        background-color: var(--mila-star13);
+        animation-range: 8% 100%;
+        position: fixed;
+        scale: 0.4;
+    }
+    
+    &:nth-of-type(14) {
+        background-color: var(--mila-star14);
+        animation-range: 8.25% 100%;
+        position: fixed;
+        scale: 0.35;
+    }
+    
+    &:nth-of-type(15) {
+        background-color: var(--mila-star15);
+        animation-range: 8.5% 100%;
+        position: fixed;
+        scale: 0.3;
+    }
+    
+    &:nth-of-type(16) {
+        background-color: var(--mila-star16);
+        animation-range: 8.75% 100%;
+        position: fixed;
+        scale: 0.25;
+    }
+    
+    &:nth-of-type(17) {
+        background-color: var(--mila-star17);
+        animation-range: 9% 100%;
+        position: fixed;
+        scale: 0.2;
+    }
+    
+    &:nth-of-type(18) {
+        background-color: var(--mila-star18);
+        animation-range: 9.25% 100%;
+        position: fixed;
+        scale: 0.15;
+    }
+    
+    &:nth-of-type(19) {
+        background-color: var(--mila-star19);
+        animation-range: 9.5% 100%;
+        position: fixed;
+        scale: 0.1;
+    }
+    
+    &:nth-of-type(20) {
+        background-color: var(--mila-star20);
+        animation-range: 9.75% 100%;
+        position: fixed;
+        scale: 0.05;
+    }
+    }
+
+
+}
+
+
+
+/* ANIMATION KEYFRAMES */
+
+@keyframes mila-rotate-star {
+0% {
+    opacity: 0;
+        transform: rotateZ(0);
+    }
+15% {
+    opacity: 0;
+    transform: rotateZ(0);
+}
+    100% {
+    opacity: 1;
+        transform: rotateZ(3turn);
+    }
+}
+
+@keyframes mila-zodiac {
+from {
+    transform: translate(0, -50%);
+}
+to {
+    transform: translate(0, 20%);
+}
+}
